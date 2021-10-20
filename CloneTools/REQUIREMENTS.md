@@ -1,0 +1,3 @@
+debian:
+  - erlang-base
+  - erlang
