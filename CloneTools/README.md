@@ -1,5 +1,4 @@
 # `db_clone` BigCouch cloning tool
-=========
 
 `db_clone` is an erlang tool to copy some or all databases from one Bigcouch cluster to another, with options for pruning CDRs and voicemail during transfer.
 
@@ -22,9 +21,9 @@ B. `db_clone` does not overwrite data on TARGET system with the exception of voi
 C. Conditional duplication based on database type:
 
 1. If the current db being cloned IS NOT a hashed `account/XX/XX/XXXXX...` db:
-  * it will get a list of all document IDs in both the SOURCE and TARGET and will then clone any IDs that *only exist* on the SOURCE.
+  * `db_clone` will get a list of all document IDs in both the SOURCE and TARGET and will then clone any IDs that *only exist* on the SOURCE.
 
-2. If the current db being cloned IS a hashed `account/XX/XX/XXXX...` db then it will (in detail):
+2. If the current db being cloned IS a hashed `account/XX/XX/XXXX...` db then the utility will (in detail):
 
   * create the database on the TARGET;
 
@@ -71,7 +70,7 @@ make
 - `max-vm-age`: maximum age in days of voicemail messages to clone; `0` is equivalent to `all`, or 'none'.  The default is `0`.
 - `list-of-dead-accounts`: a quoted and space separated list of account ids that
   will be excluded from transfer or removed from any `pvt_tree`.
-- `{databases}': a space separated list of database names, unquoted.
+- `{databases}`: a space separated list of database names, unquoted.
 
 
 ### Errata
@@ -95,10 +94,10 @@ make
 ./db_clone
 ```
 
-2. Clone `accounts` and `system_config` databases from `http://source.example.com/` to `http://target.example.com:5984/`
+2. Clone `accounts` and `system_config` databases from `http://source.example.com:5984/` to `http://target.example.com:5984/`
 
 ```bash
-./db_clone -s http://source.example.com/ -t http://target.example.com:5984/ accounts system_config
+./db_clone -s http://source.example.com:5984/ -t http://target.example.com:5984/ accounts system_config
 ```
 
 3. Alternately, clone default source and target, but excluding `accounts` and `system_config` databases via regexp:
