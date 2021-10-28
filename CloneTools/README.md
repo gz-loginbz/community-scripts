@@ -1,6 +1,8 @@
-# `db_clone` BigCouch cloning tool
+# `db_clone`: a one-way BigCouch duplication tool
 
-`db_clone` is an erlang tool to copy some or all databases from one Bigcouch cluster to another, with options for pruning CDRs and voicemail during transfer.
+`db_clone` is a purpose made erlang tool to copy some or all kazoo databases
+from one Bigcouch cluster to another, with options for pruning CDRs and
+voicemail during transfer.
 
 ## About the utility
 
@@ -8,7 +10,8 @@
 on size and service environment). To ensure the execution is not disrupted
 consider running in a terminal multiplexer.
 
-2. The proper use case is to run the script, then re-run it immediately BEFORE switching Kazoo to use the TARGET, but NEVER after :)
+2. The proper use case is to run the script, then re-run it immediately BEFORE
+switching Kazoo to use the TARGET, but NEVER after :)
 
 3. Original development sponsored by CloudPBX Inc. ~ http://cloudpbx.ca;
 
@@ -21,7 +24,8 @@ B. `db_clone` does not overwrite data on TARGET system with the exception of voi
 C. Conditional duplication based on database type:
 
 1. If the current db being cloned IS NOT a hashed `account/XX/XX/XXXXX...` db:
-  * `db_clone` will get a list of all document IDs in both the SOURCE and TARGET and will then clone any IDs that *only exist* on the SOURCE.
+  * `db_clone` will get a list of all document IDs in both the SOURCE and
+TARGET and will then clone any IDs that *only exist* on the SOURCE.
 
 2. If the current db being cloned IS a hashed `account/XX/XX/XXXX...` db then the utility will (in detail):
 
