@@ -12,7 +12,7 @@
         end).
 -define(SOURCE_PATH(Path), wh_types:to_list(iolist_to_binary([?SOURCE, wh_binary:join(Path, <<"/">>)]))).
 
--define(MAX_CR_AGE,
+-define(MAX_CDR_AGE,
         case os:getenv("MAX_CDR_AGE") of
             'false' -> 'none';
             "none" -> 'none';

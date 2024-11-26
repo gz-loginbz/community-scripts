@@ -72,7 +72,7 @@ main(Opts) ->
 
 update_view(Binary) ->
     Binary1 = update_binary(Binary, <<"date_media">>, ?MAX_VM_AGE),
-    update_binary(Binary1, <<"date_cdr">>, ?MAX_CR_AGE).
+    update_binary(Binary1, <<"date_cdr">>, ?MAX_CDR_AGE).
 
 update_binary(Binary, Key, MaxAge) ->
     Replacement = list_to_binary(integer_to_list(get_time(MaxAge))),
